@@ -20,6 +20,6 @@
     "pixi.js": "^4.6.2"
   },
   "scripts": {
-    "start": "./node_modules/typescript/bin/tsc"
+    "start": "./node_modules/typescript/bin/tsc --project ./src/ts/tsconfig.json"
   }
 }
