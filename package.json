@@ -1,6 +1,6 @@
 {
   "name": "pixi-druid",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Progruzovik",
   "repository": {
     "type": "git",
@@ -20,6 +20,6 @@
     "pixi.js": "^4.6.2"
   },
   "scripts": {
-    "start": "./node_modules/typescript/bin/tsc --project ./src/ts/tsconfig.json"
+    "start": "./node_modules/typescript/bin/tsc --project ./src/tsconfig.json"
   }
 }

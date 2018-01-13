@@ -1,4 +1,4 @@
-import { AbstractBranch, Event } from "./";
+import { AbstractBranch } from "./";
 import * as PIXI from "pixi.js";
 
 export class App {
@@ -7,8 +7,8 @@ export class App {
     private readonly application: PIXI.Application;
 
     constructor(resolution: number, private width: number, private height: number) {
-        const appOptions = { autoResize: true, resolution: resolution, sharedLoader: true, sharedTicker: true };
-        this.application = new PIXI.Application(appOptions);
+        this.application = new PIXI.Application({ autoResize: true,
+            resolution: resolution, sharedLoader: true, sharedTicker: true });
         this.resize(width, height);
     }
 
@@ -17,7 +17,9 @@ export class App {
     }
 
     set root(value: AbstractBranch) {
-        this.application.stage.removeChild(this.root);
+        if (this.root) {
+            this.application.stage.removeChild(this.root);
+        }
         this._root = value;
         if (value) {
             value.setUpChildren(this.width, this.height);
@@ -30,11 +32,21 @@ export class App {
     }
 
     resize(width: number, height: number) {
-        this.width = width;
-        this.height = height;
-        this.application.renderer.resize(width, height);
-        if (this.root) {
-            this.root.setUpChildren(width, height);
+        if (width > 0 && height > 0) {
+            this.width = width;
+            this.height = height;
+            this.application.renderer.resize(width, height);
+            if (this.root) {
+                this.root.setUpChildren(width, height);
+            }
         }
+    }
+
+    destroy() {
+        PIXI.loader.reset();
+        if (this.root) {
+            this.root.destroy({ children: true });
+        }
+        this.application.destroy();
     }
 }

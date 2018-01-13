@@ -1,10 +1,10 @@
 import { Shape } from "./Shape";
-import { Point } from "../util";
 
 export class Line extends Shape {
 
-    constructor(width: number = 0, thickness: number = 1, color: number = 0x000000) {
-        super(width, 0, thickness, color);
+    constructor(thickness: number = 1, color: number = 0x000000) {
+        super(0, 0, thickness, color);
+        this.pivot.y = this.thickness / 2;
     }
 
     get height(): number {
@@ -15,11 +15,10 @@ export class Line extends Shape {
         this.thickness = value;
     }
 
-    direct(to: Point, from: Point = this.position) {
-        const dx = to.x - from.x, dy = to.y - from.y;
+    directTo(x: number, y: number) {
+        const dx = x - this.x, dy = y - this.y;
         this.width = Math.sqrt(dx * dx + dy * dy);
         this.rotation = Math.atan2(dy, dx);
-        this.pivot.y = this.thickness / 2;
     }
 
     protected draw() {

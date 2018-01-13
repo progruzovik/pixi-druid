@@ -49,6 +49,9 @@ export abstract class Shape extends PIXI.Container {
 
     protected abstract draw();
 
+    /**
+     * Удаляет нарисованную ранее фигуру и рисует ее заново
+     */
     private redraw() {
         this.graphics.clear();
         this.draw();

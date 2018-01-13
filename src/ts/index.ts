@@ -11,3 +11,5 @@ export * from "./graphics/Shape";
 export * from "./ui/Button";
 export * from "./ui/Field";
 export * from "./ui/ProgressBar";
+export * from "./ui/Switch";
+export * from "./ui/Window";
