@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "outDir": "./lib/",
+    "target": "es5"
+  },
+  "files": [
+    "./src/ts/index.ts"
+  ],
+  "exclude": [
+    "./node_modules"
+  ]
+}

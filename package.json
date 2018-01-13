@@ -1,0 +1,25 @@
+{
+  "name": "pixi-druid",
+  "version": "1.0.5",
+  "author": "Progruzovik",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Progruzovik/pixi-druid"
+  },
+  "main": "./lib/index.js",
+  "typings": "./lib/",
+  "files": [
+    "lib/",
+    "package.json"
+  ],
+  "devDependencies": {
+    "@types/pixi.js": "^4.6.3",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "pixi.js": "^4.6.2"
+  },
+  "scripts": {
+    "start": "./node_modules/typescript/bin/tsc"
+  }
+}
