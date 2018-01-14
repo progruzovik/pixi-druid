@@ -1,5 +1,4 @@
 export * from "./AbstractActor";
-export * from "./AbstractRoot";
 export * from "./App";
 export * from "./util";
 
