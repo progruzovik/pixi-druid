@@ -3,7 +3,7 @@ import * as PIXI from "pixi.js";
 
 export class Switch extends PIXI.Sprite {
 
-    static readonly STEP_CHANGE = "stepChange";
+    static readonly TOGGLED = "toggled";
 
     private _state = 0;
     private readonly maxState: number;
@@ -33,7 +33,7 @@ export class Switch extends PIXI.Sprite {
         if (this.state != validValue) {
             this._state = validValue;
             this.rotation = this.minRotation + this.rotationStep * validValue;
-            this.emit(Switch.STEP_CHANGE);
+            this.emit(Switch.TOGGLED);
         }
     }
 }

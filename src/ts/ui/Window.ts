@@ -21,12 +21,12 @@ export class Window extends AbstractBranch {
      * @param windowHeight Высота окна
      * @param windowX Положение окна по координате x
      * @param windowY Положение окна по координате y
-     * @param rootWidth Ширина фона
-     * @param rootHeight Высота фона
+     * @param bgWidth Ширина фона
+     * @param bgHeight Высота фона
      * @param content Всё, что будет отображено внутри модального окна
      */
     constructor(windowWidth: number, windowHeight: number, windowX: number, windowY: number,
-                rootWidth: number, rootHeight: number, content: PIXI.Container) {
+                bgWidth: number, bgHeight: number, content: PIXI.Container) {
         super();
         this.bg = new Rectangle();
         this.bg.interactive = true;
@@ -36,7 +36,7 @@ export class Window extends AbstractBranch {
         this.window.position.set(windowX, windowY);
         this.window.addChild(content);
         this.addChild(this.window);
-        this.setUpChildren(rootWidth, rootHeight);
+        this.setUpChildren(bgWidth, bgHeight);
 
         this.bg.on(Event.CLICK, () => {
             this.emit(Event.DONE);

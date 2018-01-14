@@ -5,7 +5,7 @@ export class Button extends PIXI.Container {
 
     static readonly WIDTH = 165;
     static readonly HEIGHT = 40;
-    static readonly TOGGLE = "toggle";
+    static readonly TRIGGERED = "triggered";
 
     private _state: State;
     private readonly bg = new PIXI.Container();
@@ -32,7 +32,7 @@ export class Button extends PIXI.Container {
         this.on(Event.MOUSE_UP, () => {
             this.state = State.MouseOver;
             if (this.buttonMode) {
-                this.emit(Button.TOGGLE);
+                this.emit(Button.TRIGGERED);
             }
         });
         this.on(Event.MOUSE_OUT, () => this.state = State.MouseOut);
@@ -40,7 +40,7 @@ export class Button extends PIXI.Container {
         this.on(Event.TOUCH_END, () => {
             this.state = State.MouseOut;
             if (this.buttonMode) {
-                this.emit(Button.TOGGLE);
+                this.emit(Button.TRIGGERED);
             }
         });
     }
