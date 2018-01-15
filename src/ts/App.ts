@@ -31,7 +31,7 @@ export class App {
         return this.application.view;
     }
 
-    resize(width: number, height: number) {
+    resize(width: number, height: number): void {
         if (width > 0 && height > 0) {
             this.width = width;
             this.height = height;
@@ -42,7 +42,7 @@ export class App {
         }
     }
 
-    destroy() {
+    destroy(): void {
         PIXI.loader.reset();
         if (this.root) {
             this.root.destroy({ children: true });

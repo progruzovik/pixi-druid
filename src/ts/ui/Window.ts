@@ -49,7 +49,7 @@ export class Window extends AbstractBranch {
      * @param width Ширина фона
      * @param height Высота фона
      */
-    setUpChildren(width: number, height: number) {
+    setUpChildren(width: number, height: number): void {
         this.bg.width = width;
         this.bg.height = height;
     }

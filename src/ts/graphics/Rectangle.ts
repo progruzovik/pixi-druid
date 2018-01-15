@@ -17,7 +17,7 @@ export class Rectangle extends Shape {
     /**
      * Отрисовывает прямоугольник на основе его свойств (ширина, высота, цвет)
      */
-    protected draw() {
+    protected draw(): void {
         this.graphics.beginFill(this.color);
         this.graphics.drawRect(0, 0, this.width, this.height);
         this.graphics.endFill();

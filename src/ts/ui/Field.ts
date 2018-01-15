@@ -58,7 +58,7 @@ export class Field extends AbstractBranch {
         return this._height;
     }
 
-    setUpChildren(width: number, height: number) {
+    setUpChildren(width: number, height: number): void {
         this._width = width;
         this._height = height;
     }

@@ -15,13 +15,13 @@ export class Line extends Shape {
         this.thickness = value;
     }
 
-    directTo(x: number, y: number) {
+    directTo(x: number, y: number): void {
         const dx = x - this.x, dy = y - this.y;
         this.width = Math.sqrt(dx * dx + dy * dy);
         this.rotation = Math.atan2(dy, dx);
     }
 
-    protected draw() {
+    protected draw(): void {
         this.graphics.lineStyle(this.thickness, this.color);
         this.graphics.moveTo(0, this.thickness / 2);
         this.graphics.lineTo(this.width, this.thickness / 2);

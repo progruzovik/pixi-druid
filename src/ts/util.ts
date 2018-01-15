@@ -36,6 +36,11 @@ export namespace Event {
     export const TOUCH_END = "touchend";
 
     /**
+     * Обновление объекта
+     */
+    export const UPDATE = "update";
+
+    /**
      * Завершение работы объекта
      */
     export const DONE = "done";
@@ -46,11 +51,11 @@ export const enum BarTextConfig {
 }
 
 export interface SizeAware {
-    setUpChildren(width: number, height: number);
+    setUpChildren(width: number, height: number): void;
 }
 
 export abstract class AbstractBranch extends PIXI.Container implements SizeAware {
-    abstract setUpChildren(width: number, height: number);
+    abstract setUpChildren(width: number, height: number): void;
 }
 
 export class Point {

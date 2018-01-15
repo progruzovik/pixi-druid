@@ -93,7 +93,7 @@ export class Button extends PIXI.Container {
         }
     }
 
-    private updateBg() {
+    private updateBg(): void {
         this.bg.removeChildren();
         if (this.buttonMode) {
             if (this.state == State.MouseOut) {

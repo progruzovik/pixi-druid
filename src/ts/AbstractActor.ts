@@ -16,5 +16,5 @@ export abstract class AbstractActor extends PIXI.Container {
      * Метод, который вызывается при каждом обновлении картинки на экране
      * @param deltaTime Количество кадров, прошедшее с предыдущего вызова метода (относительно 60 FPS)
      */
-    protected abstract update(deltaTime: number);
+    protected abstract update(deltaTime: number): void;
 }

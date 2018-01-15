@@ -87,7 +87,7 @@ export class ProgressBar extends PIXI.Container {
         this.txtMain.y = value / 2;
     }
 
-    private calculateBarWidth() {
+    private calculateBarWidth(): void {
         this.bar.width = (this.value - this.minimum) / (this.maximum - this.minimum) * this.width;
     }
 }
