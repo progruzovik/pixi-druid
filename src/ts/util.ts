@@ -46,6 +46,10 @@ export namespace Event {
     export const DONE = "done";
 }
 
+export const enum Alignment {
+    Left, Center, Right
+}
+
 export const enum BarTextConfig {
     Default, Custom
 }

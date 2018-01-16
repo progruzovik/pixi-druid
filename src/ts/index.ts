@@ -13,3 +13,5 @@ export * from "./ui/ProgressBar";
 export * from "./ui/ScalableBranch";
 export * from "./ui/Switch";
 export * from "./ui/Window";
+export * from "./ui/layout/HorizontalLayout";
+export * from "./ui/layout/VerticalLayout";
