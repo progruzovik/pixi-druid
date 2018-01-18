@@ -4,8 +4,8 @@ import * as PIXI from "pixi.js";
 export class ProgressBar extends PIXI.Container {
 
     private _value: number;
-    private _width: number;
 
+    private readonly bg: Rectangle;
     private readonly bar: Rectangle;
     readonly txtMain: PIXI.Text;
 
@@ -13,6 +13,9 @@ export class ProgressBar extends PIXI.Container {
                 private readonly textConfig = BarTextConfig.Custom,
                 private _maximum: number = 100, private _minimum: number = 0) {
         super();
+        this.bg = new Rectangle(width, height);
+        this.bg.alpha = 0;
+        this.addChild(this.bg);
         this.bar = new Rectangle(0, 0, color);
         this.addChild(this.bar);
         this.txtMain = new PIXI.Text("", { fill: "white", fontSize: 18 });
@@ -69,11 +72,11 @@ export class ProgressBar extends PIXI.Container {
     }
 
     get width(): number {
-        return this._width;
+        return this.bg.width;
     }
 
     set width(value: number) {
-        this._width = value;
+        this.bg.width = value;
         this.txtMain.x = value / 2;
         this.calculateBarWidth();
     }
