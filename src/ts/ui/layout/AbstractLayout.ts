@@ -5,7 +5,7 @@ export abstract class AbstractLayout extends PIXI.Container {
 
     protected readonly elements = new Array<PIXI.Container>(0);
 
-    constructor(private _spacing: number = INDENT) {
+    constructor(protected _spacing: number = INDENT) {
         super();
     }
 
