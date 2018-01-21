@@ -1,4 +1,4 @@
-import { BarTextConfig, CENTER, Rectangle } from "../";
+import { BarTextConfig, Rectangle } from "../";
 import * as PIXI from "pixi.js";
 
 export class ProgressBar extends PIXI.Container {
@@ -19,7 +19,7 @@ export class ProgressBar extends PIXI.Container {
         this.bar = new Rectangle(0, 0, color);
         this.addChild(this.bar);
         this.txtMain = new PIXI.Text("", { fill: "white", fontSize: 18 });
-        this.txtMain.anchor.set(CENTER, CENTER);
+        this.txtMain.anchor.set(0.5, 0.5);
         this.addChild(this.txtMain);
 
         this.value = this.minimum;

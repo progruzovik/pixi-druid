@@ -18,6 +18,10 @@ export abstract class AbstractLayout extends PIXI.Container {
         this.updateElements();
     }
 
+    get elementsCount(): number {
+        return this.elements.length;
+    }
+
     getElementAt(index: number): PIXI.Container {
         return this.elements[index];
     }
@@ -25,6 +29,13 @@ export abstract class AbstractLayout extends PIXI.Container {
     addElement(element: PIXI.Container): PIXI.Container {
         this.elements.push(element);
         this.addChild(element);
+        this.updateElements();
+        return element;
+    }
+
+    addElementAt(element: PIXI.Container, index: number): PIXI.Container {
+        this.elements.splice(index, 0, element);
+        this.addChildAt(element, index);
         this.updateElements();
         return element;
     }

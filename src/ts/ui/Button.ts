@@ -1,4 +1,4 @@
-import { CENTER, Event, Rectangle } from "../";
+import { Event, Rectangle } from "../";
 import * as PIXI from "pixi.js";
 
 export class Button extends PIXI.Container {
@@ -22,7 +22,7 @@ export class Button extends PIXI.Container {
         this.state = State.MouseOut;
         this.addChild(this.bg);
         this.txtMain = new PIXI.Text(text, { align: "center", fill: "white", fontSize: 28 });
-        this.txtMain.anchor.set(CENTER, CENTER);
+        this.txtMain.anchor.set(0.5, 0.5);
         this.addChild(this.txtMain);
         this.width = this.bg.width;
         this.height = this.bg.height;

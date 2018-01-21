@@ -1,4 +1,4 @@
-import { CENTER, Event } from "../";
+import { Event } from "../";
 import * as PIXI from "pixi.js";
 
 export class Switch extends PIXI.Sprite {
@@ -17,7 +17,7 @@ export class Switch extends PIXI.Sprite {
         this.interactive = true;
         this.buttonMode = true;
         this.rotation = this.minRotation;
-        this.anchor.set(CENTER, CENTER);
+        this.anchor.set(0.5, 0.5);
         this.on(Event.CLICK, () => this.state++);
     }
 

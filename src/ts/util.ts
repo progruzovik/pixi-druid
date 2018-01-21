@@ -1,10 +1,5 @@
 import * as PIXI from "pixi.js";
 
-/**
- * Относительный центр отображаемого объекта (константа для быстрой установки свойства anchor)
- */
-export const CENTER = 0.5;
-
 export const INDENT = 20;
 
 /**
