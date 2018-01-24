@@ -5,7 +5,7 @@ export abstract class Shape extends PIXI.Container {
     protected readonly graphics = new PIXI.Graphics();
 
     constructor(private _width: number = 0, private _height: number = 0,
-                private _thickness: number = 1, private _color: number = 0x000000) {
+                private _color: number = 0x000000, private _thickness: number = 1) {
         super();
         this.addChild(this.graphics);
         this.draw();

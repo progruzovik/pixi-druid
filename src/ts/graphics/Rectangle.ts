@@ -11,7 +11,7 @@ export class Rectangle extends Shape {
      * @property color Код цвета (16-ричное число)
      */
     constructor(width: number = 0, height: number = 0, color: number = 0x000000) {
-        super(width, height, 0, color);
+        super(width, height, color, 0);
     }
 
     /**

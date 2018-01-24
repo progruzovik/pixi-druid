@@ -3,7 +3,7 @@ import { Shape } from "./Shape";
 export class Line extends Shape {
 
     constructor(thickness: number = 1, color: number = 0x000000) {
-        super(0, 0, thickness, color);
+        super(0, 0, color, thickness);
         this.pivot.y = this.thickness / 2;
     }
 
