@@ -12,7 +12,8 @@ export class Button extends PIXI.Container {
     readonly txtMain: PIXI.Text;
 
     constructor(text: string = "",
-                private readonly bgMouseOut: PIXI.Container = new Rectangle(Button.WIDTH, Button.HEIGHT, 0x333333),
+                private readonly bgDefault: PIXI.Container
+                    = new Rectangle(Button.WIDTH, Button.HEIGHT, 0x333333),
                 private readonly bgMouseOver: PIXI.Container = new Rectangle(0, 0, 0x555555),
                 private readonly bgMouseDown: PIXI.Container = new Rectangle(0, 0, 0x222222),
                 private readonly bgDisabled: PIXI.Container = bgMouseOver) {
@@ -63,7 +64,7 @@ export class Button extends PIXI.Container {
     }
 
     set width(value: number) {
-        this.bgMouseOut.width = value;
+        this.bgDefault.width = value;
         this.bgMouseOver.width = value;
         this.bgMouseDown.width = value;
         this.bgDisabled.width = value;
@@ -71,11 +72,11 @@ export class Button extends PIXI.Container {
     }
 
     get height() {
-        return this.bgMouseOut.height;
+        return this.bgDefault.height;
     }
 
     set height(value: number) {
-        this.bgMouseOut.height = value;
+        this.bgDefault.height = value;
         this.bgMouseOver.height = value;
         this.bgMouseDown.height = value;
         this.bgDisabled.height = value;
@@ -97,7 +98,7 @@ export class Button extends PIXI.Container {
         this.bg.removeChildren();
         if (this.buttonMode) {
             if (this.state == State.MouseOut) {
-                this.bg.addChild(this.bgMouseOut);
+                this.bg.addChild(this.bgDefault);
             } else if (this.state == State.MouseOver) {
                 this.bg.addChild(this.bgMouseOver);
             } else if (this.state == State.MouseDown) {
