@@ -11,7 +11,7 @@ export * from "./ui/Button";
 export * from "./ui/Field";
 export * from "./ui/ProgressBar";
 export * from "./ui/ScalableBranch";
-export * from "./ui/Switch";
+export * from "./ui/SwitchButton";
 export * from "./ui/Window";
 export * from "./ui/layout/HorizontalLayout";
 export * from "./ui/layout/VerticalLayout";

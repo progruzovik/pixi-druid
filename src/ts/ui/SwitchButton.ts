@@ -1,7 +1,7 @@
 import { Event } from "../";
 import * as PIXI from "pixi.js";
 
-export class Switch extends PIXI.Sprite {
+export class SwitchButton extends PIXI.Sprite {
 
     static readonly TOGGLED = "toggled";
 
@@ -26,14 +26,11 @@ export class Switch extends PIXI.Sprite {
     }
 
     set state(value: number) {
-        let validValue: number = value;
-        if (validValue < -1 || validValue > this.maxState) {
-            validValue = 0;
-        }
+        const validValue: number = value < 0 || value > this.maxState ? 0 : value;
         if (this.state != validValue) {
             this._state = validValue;
             this.rotation = this.minRotation + this.rotationStep * validValue;
-            this.emit(Switch.TOGGLED);
+            this.emit(SwitchButton.TOGGLED);
         }
     }
 }
