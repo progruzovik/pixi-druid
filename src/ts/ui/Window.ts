@@ -24,15 +24,16 @@ export class Window extends AbstractBranch {
      * @param bgWidth Ширина фона
      * @param bgHeight Высота фона
      * @param content Всё, что будет отображено внутри модального окна
+     * @param windowColor Color of the window
      */
     constructor(windowWidth: number, windowHeight: number, windowX: number, windowY: number,
-                bgWidth: number, bgHeight: number, content: PIXI.Container) {
+                bgWidth: number, bgHeight: number, content: PIXI.Container, windowColor: number = 0xffffff) {
         super();
         this.bg = new Rectangle();
         this.bg.interactive = true;
         this.bg.alpha = 0.1;
         this.addChild(this.bg);
-        this.window = new Rectangle(windowWidth, windowHeight, 0xdedede);
+        this.window = new Rectangle(windowWidth, windowHeight, windowColor);
         this.window.position.set(windowX, windowY);
         this.window.addChild(content);
         this.addChild(this.window);
