@@ -1,6 +1,6 @@
 {
   "name": "pixi-druid",
-  "version": "1.0.41",
+  "version": "1.0.46",
   "author": "Progruzovik",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
     "package.json"
   ],
   "scripts": {
-    "start": "./node_modules/typescript/bin/tsc --project ./src/tsconfig.json"
+    "start": "npm run compile && npm publish",
+    "compile": "./node_modules/typescript/bin/tsc --project ./src/tsconfig.json"
   },
   "devDependencies": {
     "@types/pixi.js": "^4.6.3",
