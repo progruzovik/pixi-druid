@@ -8,6 +8,7 @@ export * from "./graphics/Rectangle";
 export * from "./graphics/Shape";
 
 export * from "./ui/button/Button";
+export * from "./ui/button/ButtonGroup";
 export * from "./ui/button/SwitchButton";
 export * from "./ui/layout/HorizontalLayout";
 export * from "./ui/layout/VerticalLayout";

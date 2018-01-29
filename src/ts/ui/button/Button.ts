@@ -1,4 +1,4 @@
-import { Event, Rectangle } from "../../index";
+import { Event, Rectangle } from "../../";
 import * as PIXI from "pixi.js";
 
 export class Button extends PIXI.Container {
