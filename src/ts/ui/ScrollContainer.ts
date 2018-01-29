@@ -1,6 +1,6 @@
 import { AbstractBranch, Event } from "../";
 
-export class Field extends AbstractBranch {
+export class ScrollContainer extends AbstractBranch {
 
     private _width: number;
     private _height: number;

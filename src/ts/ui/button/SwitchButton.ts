@@ -1,4 +1,4 @@
-import { Event } from "../";
+import { Event } from "../../index";
 import * as PIXI from "pixi.js";
 
 export class SwitchButton extends PIXI.Sprite {
