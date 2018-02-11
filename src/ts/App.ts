@@ -6,9 +6,9 @@ export class App extends PIXI.utils.EventEmitter {
     private _root: AbstractBranch;
     private readonly application: PIXI.Application;
 
-    constructor(resolution: number, private width: number, private height: number) {
+    constructor(resolution: number, private width: number, private height: number, canvas?: HTMLCanvasElement) {
         super();
-        this.application = new PIXI.Application({ autoResize: true,
+        this.application = new PIXI.Application({ autoResize: true, view: canvas,
             resolution: resolution, sharedLoader: true, sharedTicker: true });
         this.resize(width, height);
     }
