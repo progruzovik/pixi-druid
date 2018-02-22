@@ -15,4 +15,3 @@ export * from "./ui/layout/VerticalLayout";
 export * from "./ui/ProgressBar";
 export * from "./ui/ScalableBranch";
 export * from "./ui/ScrollContainer";
-export * from "./ui/Window";
