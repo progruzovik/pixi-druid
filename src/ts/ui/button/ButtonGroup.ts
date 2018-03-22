@@ -6,13 +6,17 @@ export class ButtonGroup extends PIXI.utils.EventEmitter {
     private _isEnabled = true;
     private _activeButtonIndex = 0;
 
-    constructor(private readonly buttons: Button[]) {
+    private readonly buttons: Button[] = [];
+
+    constructor(...buttons: Button[]) {
         super();
         buttons.forEach((b, i) => {
             b.isEnabled = true;
+            this.buttons.push(b);
+
             b.on(Button.TRIGGERED, () => {
                 this.activeButtonIndex = i;
-                this.emit(Button.TRIGGERED, i);
+                this.emit(Button.TRIGGERED, b);
             });
         });
         this.activeButtonIndex = 0;
