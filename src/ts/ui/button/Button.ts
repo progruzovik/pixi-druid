@@ -69,6 +69,7 @@ export class Button extends PIXI.Container {
         this.bgMouseOver.width = value;
         this.bgMouseDown.width = value;
         this.bgDisabled.width = value;
+        this.txtMain.style.wordWrapWidth = value;
         this.txtMain.x = value / 2;
     }
 
