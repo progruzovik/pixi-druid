@@ -25,7 +25,7 @@ export class ScrollContainer extends AbstractBranch {
                 if (this.content.x > 0) {
                     this.content.x = 0;
                 } else {
-                    const leftBorder = this.width - this.content.width;
+                    const leftBorder: number = this.width - this.content.width;
                     if (leftBorder > 0) {
                         this.content.x = 0;
                     } else if (this.content.x < leftBorder) {
@@ -36,7 +36,7 @@ export class ScrollContainer extends AbstractBranch {
                 if (this.content.y > 0) {
                     this.content.y = 0;
                 } else {
-                    const topBorder = this.height - this.content.height;
+                    const topBorder: number = this.height - this.content.height;
                     if (topBorder > 0) {
                         this.content.y = 0;
                     } else if (this.content.y < topBorder) {
