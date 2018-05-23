@@ -23,7 +23,7 @@ export class App extends PIXI.utils.EventEmitter {
         }
         this._root = value;
         if (value) {
-            value.setUpChildren(this.width, this.height);
+            value.resize(this.width, this.height);
             this.application.stage.addChild(value);
         }
     }
@@ -38,7 +38,7 @@ export class App extends PIXI.utils.EventEmitter {
             this.height = height;
             this.application.renderer.resize(width, height);
             if (this.root) {
-                this.root.setUpChildren(width, height);
+                this.root.resize(width, height);
             }
         }
     }

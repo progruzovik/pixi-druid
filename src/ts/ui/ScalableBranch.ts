@@ -2,9 +2,9 @@ import { AbstractBranch } from "../";
 
 export class ScalableBranch extends AbstractBranch {
 
-    setUpChildren(width: number, height: number): void {
+    onResize(): void {
         const bounds = this.getLocalBounds();
-        const ratio = Math.min(width / bounds.width, height / bounds.height);
+        const ratio = Math.min(this.width / bounds.width, this.height / bounds.height);
         this.scale.set(ratio, ratio);
     }
 }

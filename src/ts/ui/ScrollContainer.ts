@@ -2,9 +2,6 @@ import { AbstractBranch, Event } from "../";
 
 export class ScrollContainer extends AbstractBranch {
 
-    private _width: number;
-    private _height: number;
-
     private isLeftMouseButtonDown = false;
     private readonly savedMousePosition = new PIXI.Point();
 
@@ -50,16 +47,5 @@ export class ScrollContainer extends AbstractBranch {
         this.on(Event.MOUSE_OUT, () => this.isLeftMouseButtonDown = false);
     }
 
-    get width(): number {
-        return this._width;
-    }
-
-    get height(): number {
-        return this._height;
-    }
-
-    setUpChildren(width: number, height: number): void {
-        this._width = width;
-        this._height = height;
-    }
+    onResize(): void {}
 }

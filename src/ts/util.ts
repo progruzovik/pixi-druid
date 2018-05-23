@@ -1,5 +1,3 @@
-import * as PIXI from "pixi.js";
-
 export const INDENT = 20;
 
 /**
@@ -50,11 +48,7 @@ export const enum BarTextConfig {
 }
 
 export interface SizeAware {
-    setUpChildren(width: number, height: number): void;
-}
-
-export abstract class AbstractBranch extends PIXI.Container implements SizeAware {
-    abstract setUpChildren(width: number, height: number): void;
+    resize(width: number, height: number): void;
 }
 
 export class Point {
