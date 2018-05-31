@@ -24,6 +24,8 @@ export namespace Event {
 
     export const MOUSE_OUT = "mouseout";
 
+    export const MOUSE_UP_OUTSIDE = "mouseupoutside";
+
     export const TOUCH_START = "touchstart";
 
     export const TOUCH_END = "touchend";
