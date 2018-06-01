@@ -4,19 +4,6 @@ export class ScrollContainer extends AbstractBranch {
 
     static readonly INTERACTION = "interaction";
 
-    readonly content: PIXI.Container = new ScrollContent();
-
-    constructor() {
-        super();
-        this.addChild(this.content);
-        this.content.on(ScrollContainer.INTERACTION, () => this.emit(ScrollContainer.INTERACTION));
-    }
-
-    onResize(): void {}
-}
-
-class ScrollContent extends PIXI.Container {
-
     private static readonly MIN_ZOOM = 0.75;
     private static readonly MAX_ZOOM = 1.25;
     private static readonly ZOOM_FACTOR = 1.02;
@@ -25,49 +12,52 @@ class ScrollContent extends PIXI.Container {
     private isLeftMouseButtonDown = false;
     private readonly mousePosition = new PIXI.Point();
 
+    readonly content = new PIXI.Container();
+
     constructor() {
         super();
-        this.interactive = true;
+        this.content.interactive = true;
+        this.addChild(this.content);
 
-        this.on(Event.MOUSE_OVER, () => this.isMouseOnContainer = true);
-        this.on(Event.MOUSE_MOVE, (e: PIXI.interaction.InteractionEvent) => {
-            const oldMousePosition: PIXI.Point = this.mousePosition.clone();
+        this.content.on(Event.MOUSE_OVER, () => this.isMouseOnContainer = true);
+        this.content.on(Event.MOUSE_MOVE, (e: PIXI.interaction.InteractionEvent) => {
+            const oldMousePosition = this.mousePosition.clone();
             this.mousePosition.set(e.data.global.x, e.data.global.y);
             if (this.isLeftMouseButtonDown) {
-                this.x += this.mousePosition.x - oldMousePosition.x;
-                this.y += this.mousePosition.y - oldMousePosition.y;
-                this.normalizePosition();
+                this.content.x += this.mousePosition.x - oldMousePosition.x;
+                this.content.y += this.mousePosition.y - oldMousePosition.y;
+                this.normalizeContentPosition();
                 this.emit(ScrollContainer.INTERACTION);
             }
         });
-        this.on(Event.MOUSE_DOWN, () => this.isLeftMouseButtonDown = true);
-        this.on(Event.MOUSE_UP, () => this.isLeftMouseButtonDown = false);
-        this.on(Event.MOUSE_OUT, () => this.isMouseOnContainer = false);
-        this.on(Event.MOUSE_UP_OUTSIDE, () => this.isLeftMouseButtonDown = false);
+        this.content.on(Event.MOUSE_DOWN, () => this.isLeftMouseButtonDown = true);
+        this.content.on(Event.MOUSE_UP, () => this.isLeftMouseButtonDown = false);
+        this.content.on(Event.MOUSE_OUT, () => this.isMouseOnContainer = false);
+        this.content.on(Event.MOUSE_UP_OUTSIDE, () => this.isLeftMouseButtonDown = false);
 
         const onWheel = (e: WheelEvent) => {
             if (this.isMouseOnContainer) {
                 e.preventDefault();
                 let newScale = 0;
                 if (e.deltaY > 0) {
-                    newScale = this.scale.x / ScrollContent.ZOOM_FACTOR;
-                    if (newScale < ScrollContent.MIN_ZOOM) {
-                        newScale = ScrollContent.MIN_ZOOM;
+                    newScale = this.content.scale.x / ScrollContainer.ZOOM_FACTOR;
+                    if (newScale < ScrollContainer.MIN_ZOOM) {
+                        newScale = ScrollContainer.MIN_ZOOM;
                     }
                 } else if (e.deltaY < 0) {
-                    newScale = this.scale.x * ScrollContent.ZOOM_FACTOR;
-                    if (newScale > ScrollContent.MAX_ZOOM) {
-                        newScale = ScrollContent.MAX_ZOOM;
+                    newScale = this.content.scale.x * ScrollContainer.ZOOM_FACTOR;
+                    if (newScale > ScrollContainer.MAX_ZOOM) {
+                        newScale = ScrollContainer.MAX_ZOOM;
                     }
                 }
-                if (newScale != 0 && this.scale.x != newScale) {
+                if (newScale != 0 && this.content.scale.x != newScale) {
                     const localBounds: PIXI.Rectangle = this.getLocalBounds();
-                    const localMouseX: number = (this.mousePosition.x - localBounds.x) / this.scale.x;
-                    const localMouseY: number = (this.mousePosition.y - localBounds.y) / this.scale.y;
-                    this.scale.set(newScale, newScale);
-                    this.x = (this.mousePosition.x / newScale - localMouseX) * newScale;
-                    this.y = (this.mousePosition.y / newScale - localMouseY) * newScale;
-                    this.normalizePosition();
+                    const localMouseX: number = (this.mousePosition.x - localBounds.x) / this.content.scale.x;
+                    const localMouseY: number = (this.mousePosition.y - localBounds.y) / this.content.scale.y;
+                    this.content.scale.set(newScale, newScale);
+                    this.content.x = (this.mousePosition.x / newScale - localMouseX) * newScale;
+                    this.content.y = (this.mousePosition.y / newScale - localMouseY) * newScale;
+                    this.normalizeContentPosition();
                     this.emit(ScrollContainer.INTERACTION);
                 }
             }
@@ -76,18 +66,20 @@ class ScrollContent extends PIXI.Container {
         this.on(Event.REMOVED, () => window.removeEventListener("wheel", onWheel));
     }
 
-    private normalizePosition(): void {
-        const leftBorder: number = this.width / 2 - this.width;
-        if (this.x < leftBorder) {
-            this.x = leftBorder;
-        } else if (this.x > this.width / 2) {
-            this.x = this.width / 2;
+    onResize(): void {}
+
+    private normalizeContentPosition(): void {
+        const leftBorder: number = this.width / 2 - this.content.width;
+        if (this.content.x < leftBorder) {
+            this.content.x = leftBorder;
+        } else if (this.content.x > this.width / 2) {
+            this.content.x = this.width / 2;
         }
-        const topBorder: number = this.height / 2 - this.height;
-        if (this.y < topBorder) {
-            this.y = topBorder;
-        } else if (this.y > this.height / 2) {
-            this.y = this.height /2;
+        const topBorder: number = this.height / 2 - this.content.height;
+        if (this.content.y < topBorder) {
+            this.content.y = topBorder;
+        } else if (this.content.y > this.height / 2) {
+            this.content.y = this.height /2;
         }
     }
 }
