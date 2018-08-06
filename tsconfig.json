@@ -2,11 +2,11 @@
   "compilerOptions": {
     "declaration": true,
     "module": "commonjs",
-    "outDir": "../lib/",
+    "outDir": "./lib/",
     "removeComments": true,
     "target": "es5"
   },
   "files": [
-    "./ts/index.ts"
+    "./src/ts/index.ts"
   ]
 }
