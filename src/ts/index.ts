@@ -12,7 +12,7 @@ export * from "./ui/button/ButtonGroup";
 export * from "./ui/button/ToggleButton";
 export * from "./ui/layout/HorizontalLayout";
 export * from "./ui/layout/VerticalLayout";
-export * from "./ui/AbstractBranch";
+export * from "./ui/Branch";
 export * from "./ui/ProgressBar";
 export * from "./ui/ScalableBranch";
 export * from "./ui/ScrollContainer";

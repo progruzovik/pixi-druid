@@ -1,6 +1,6 @@
-import { AbstractBranch, Event } from "../";
+import { Branch, Event } from "../";
 
-export class ScrollContainer extends AbstractBranch {
+export class ScrollContainer extends Branch {
 
     static readonly INTERACTION = "interaction";
 
@@ -65,8 +65,6 @@ export class ScrollContainer extends AbstractBranch {
         this.on(Event.ADDED, () => window.addEventListener("wheel", onWheel));
         this.on(Event.REMOVED, () => window.removeEventListener("wheel", onWheel));
     }
-
-    onResize(): void {}
 
     private normalizeContentPosition(): void {
         const leftBorder: number = this.width / 2 - this.content.width;

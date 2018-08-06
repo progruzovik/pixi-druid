@@ -1,7 +1,7 @@
-import { SizeAware } from "../util";
+import { Event, SizeAware } from "../util";
 import * as PIXI from "pixi.js";
 
-export abstract class AbstractBranch extends PIXI.Container implements SizeAware {
+export class Branch extends PIXI.Container implements SizeAware {
 
     private _width = 0;
     private _height = 0;
@@ -17,8 +17,6 @@ export abstract class AbstractBranch extends PIXI.Container implements SizeAware
     resize(width: number, height: number) {
         this._width = width;
         this._height = height;
-        this.onResize();
+        this.emit(Event.RESIZE, width, height);
     }
-
-    protected abstract onResize(): void;
 }

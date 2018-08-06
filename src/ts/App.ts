@@ -1,9 +1,9 @@
-import { AbstractBranch } from "./";
+import { Branch } from "./";
 import * as PIXI from "pixi.js";
 
 export class App extends PIXI.utils.EventEmitter {
 
-    private _root: AbstractBranch;
+    private _root: Branch;
     private readonly application: PIXI.Application;
 
     constructor(resolution: number, private width: number, private height: number, canvas?: HTMLCanvasElement) {
@@ -13,11 +13,11 @@ export class App extends PIXI.utils.EventEmitter {
         this.resize(width, height);
     }
 
-    get root(): AbstractBranch {
+    get root(): Branch {
         return this._root;
     }
 
-    set root(value: AbstractBranch) {
+    set root(value: Branch) {
         if (this.root) {
             this.application.stage.removeChild(this.root);
         }

@@ -26,6 +26,8 @@ export namespace Event {
 
     export const MOUSE_UP_OUTSIDE = "mouseupoutside";
 
+    export const RESIZE = "resize";
+
     export const TOUCH_START = "touchstart";
 
     export const TOUCH_END = "touchend";
