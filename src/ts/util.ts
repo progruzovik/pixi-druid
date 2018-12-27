@@ -14,6 +14,10 @@ export namespace Event {
      */
     export const CLICK = "click";
 
+    export const KEY_EVENT = "keyEvent";
+
+    export const KEY_RELEASE = "keyRelease";
+
     export const MOUSE_OVER = "mouseover";
 
     export const MOUSE_DOWN = "mousedown";

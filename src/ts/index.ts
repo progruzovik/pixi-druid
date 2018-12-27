@@ -1,5 +1,6 @@
 export * from "./AbstractActor";
 export * from "./App";
+export * from "./KeyboardListener";
 export * from "./util";
 
 export * from "./graphics/Frame";
