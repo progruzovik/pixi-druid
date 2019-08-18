@@ -9,7 +9,7 @@ export class App extends PIXI.utils.EventEmitter {
     constructor(resolution: number, private width: number, private height: number,
                 backgroundColor: number = 0x000000, canvas?: HTMLCanvasElement) {
         super();
-        this.application = new PIXI.Application({ autoResize: true, backgroundColor: backgroundColor,
+        this.application = new PIXI.Application({ autoDensity: true, backgroundColor: backgroundColor,
             view: canvas, resolution: resolution, sharedLoader: true, sharedTicker: true });
         this.resize(width, height);
     }
