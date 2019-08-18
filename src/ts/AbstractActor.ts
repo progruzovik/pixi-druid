@@ -8,8 +8,8 @@ export abstract class AbstractActor extends PIXI.Container {
 
     constructor() {
         super();
-        this.on(Event.ADDED, () => PIXI.ticker.shared.add(this.update, this));
-        this.on(Event.REMOVED, () => PIXI.ticker.shared.remove(this.update, this));
+        this.on(Event.ADDED, () => PIXI.Ticker.shared.add(this.update, this));
+        this.on(Event.REMOVED, () => PIXI.Ticker.shared.remove(this.update, this));
     }
 
     /**
