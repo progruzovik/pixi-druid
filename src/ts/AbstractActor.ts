@@ -6,10 +6,21 @@ import * as PIXI from "pixi.js";
  */
 export abstract class AbstractActor extends PIXI.Container {
 
-    constructor() {
+    private isTickerActive = false;
+
+    constructor(isTickerEnabled: boolean = true) {
         super();
-        this.on(Event.ADDED, () => PIXI.Ticker.shared.add(this.update, this));
-        this.on(Event.REMOVED, () => PIXI.Ticker.shared.remove(this.update, this));
+        if (isTickerEnabled) {
+            this.activateTicker();
+        }
+    }
+
+    activateTicker() {
+        if (!this.isTickerActive) {
+            this.isTickerActive = true;
+            this.on(Event.ADDED, () => PIXI.Ticker.shared.add(this.update, this));
+            this.on(Event.REMOVED, () => PIXI.Ticker.shared.remove(this.update, this));
+        }
     }
 
     /**

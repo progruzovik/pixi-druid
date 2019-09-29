@@ -1,10 +1,14 @@
 import { Event, SizeAware } from "../util";
-import * as PIXI from "pixi.js";
+import { AbstractActor } from "../AbstractActor";
 
-export class Branch extends PIXI.Container implements SizeAware {
+export class Branch extends AbstractActor implements SizeAware {
 
     private _width = 0;
     private _height = 0;
+
+    constructor(isTickerEnabled: boolean = false) {
+        super(isTickerEnabled);
+    }
 
     get width(): number {
         return this._width;
@@ -19,4 +23,6 @@ export class Branch extends PIXI.Container implements SizeAware {
         this._height = height;
         this.emit(Event.RESIZE, width, height);
     }
+
+    protected update(deltaTime: number): void {}
 }
