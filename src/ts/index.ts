@@ -11,6 +11,7 @@ export * from "./graphics/Shape";
 export * from "./ui/button/Button";
 export * from "./ui/button/ButtonGroup";
 export * from "./ui/button/ToggleButton";
+export * from "./ui/font/FontLoader";
 export * from "./ui/layout/HorizontalLayout";
 export * from "./ui/layout/VerticalLayout";
 export * from "./ui/Branch";

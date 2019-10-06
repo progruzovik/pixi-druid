@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "lib": ["dom", "es2015"],
     "module": "commonjs",
     "outDir": "./lib/",
     "removeComments": true,
