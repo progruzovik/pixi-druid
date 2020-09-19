@@ -7,19 +7,19 @@ export class Button extends PIXI.Container {
     static readonly HEIGHT = 40;
     static readonly TRIGGERED = "triggered";
 
-    private _state: State;
-    private readonly bg = new PIXI.Container();
+    private _state: Button.State;
+    protected readonly bg = new PIXI.Container();
     readonly txtMain: PIXI.Text;
 
     constructor(text: string = "",
-                private readonly bgDefault: PIXI.Container = new Rectangle(Button.WIDTH, Button.HEIGHT, 0x333333),
-                private readonly bgMouseOver: PIXI.Container = new Rectangle(0, 0, 0x555555),
-                private readonly bgMouseDown: PIXI.Container = new Rectangle(0, 0, 0x222222),
-                private readonly bgDisabled: PIXI.Container = bgMouseOver) {
+                protected readonly bgDefault: PIXI.Container = new Rectangle(Button.WIDTH, Button.HEIGHT, 0x333333),
+                protected readonly bgMouseOver: PIXI.Container = new Rectangle(0, 0, 0x555555),
+                protected readonly bgMouseDown: PIXI.Container = new Rectangle(0, 0, 0x222222),
+                protected readonly bgDisabled: PIXI.Container = bgMouseOver) {
         super();
         this.interactive = true;
         this.buttonMode = true;
-        this.state = State.MouseOut;
+        this.state = Button.State.MouseOut;
         this.addChild(this.bg);
         this.txtMain = new PIXI.Text(text,
             { align: "center", fill: "white", fontSize: 28, wordWrap: true, wordWrapWidth: bgDefault.width });
@@ -28,18 +28,18 @@ export class Button extends PIXI.Container {
         this.width = this.bg.width;
         this.height = this.bg.height;
 
-        this.on(Event.MOUSE_OVER, () => this.state = State.MouseOver);
-        this.on(Event.MOUSE_DOWN, () => this.state = State.MouseDown);
+        this.on(Event.MOUSE_OVER, () => this.state = Button.State.MouseOver);
+        this.on(Event.MOUSE_DOWN, () => this.state = Button.State.MouseDown);
         this.on(Event.MOUSE_UP, () => {
-            this.state = State.MouseOver;
+            this.state = Button.State.MouseOver;
             if (this.buttonMode) {
                 this.emit(Button.TRIGGERED);
             }
         });
-        this.on(Event.MOUSE_OUT, () => this.state = State.MouseOut);
-        this.on(Event.TOUCH_START, () => this.state = State.MouseDown);
+        this.on(Event.MOUSE_OUT, () => this.state = Button.State.MouseOut);
+        this.on(Event.TOUCH_START, () => this.state = Button.State.MouseDown);
         this.on(Event.TOUCH_END, () => {
-            this.state = State.MouseOut;
+            this.state = Button.State.MouseOut;
             if (this.buttonMode) {
                 this.emit(Button.TRIGGERED);
             }
@@ -84,25 +84,25 @@ export class Button extends PIXI.Container {
         this.txtMain.y = value / 2;
     }
 
-    private get state(): State {
+    protected get state(): Button.State {
         return this._state;
     }
 
-    private set state(value: State) {
+    protected set state(value: Button.State) {
         if (this._state != value) {
             this._state = value;
             this.updateBg();
         }
     }
 
-    private updateBg(): void {
+    protected updateBg(): void {
         this.bg.removeChildren();
         if (this.buttonMode) {
-            if (this.state == State.MouseOut) {
+            if (this.state == Button.State.MouseOut) {
                 this.bg.addChild(this.bgDefault);
-            } else if (this.state == State.MouseOver) {
+            } else if (this.state == Button.State.MouseOver) {
                 this.bg.addChild(this.bgMouseOver);
-            } else if (this.state == State.MouseDown) {
+            } else if (this.state == Button.State.MouseDown) {
                 this.bg.addChild(this.bgMouseDown);
             }
         } else {
@@ -111,6 +111,9 @@ export class Button extends PIXI.Container {
     }
 }
 
-const enum State {
-    MouseOut, MouseOver, MouseDown
+export namespace Button {
+
+    export const enum State {
+        MouseOut, MouseOver, MouseDown
+    }
 }
