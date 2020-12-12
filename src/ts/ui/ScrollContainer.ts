@@ -20,7 +20,7 @@ export class ScrollContainer extends Branch {
         this.addChild(this.content);
 
         this.content.on(Event.MOUSE_OVER, () => this.isMouseOnContainer = true);
-        this.content.on(Event.MOUSE_MOVE, (e: PIXI.interaction.InteractionEvent) => {
+        this.content.on(Event.MOUSE_MOVE, (e: PIXI.InteractionEvent) => {
             const oldMousePosition = this.mousePosition.clone();
             this.mousePosition.set(e.data.global.x, e.data.global.y);
             if (this.isLeftMouseButtonDown) {

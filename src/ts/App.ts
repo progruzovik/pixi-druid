@@ -45,7 +45,7 @@ export class App extends PIXI.utils.EventEmitter {
     }
 
     destroy(): void {
-        PIXI.loader.reset();
+        PIXI.Loader.shared.reset();
         if (this.root) {
             this.root.destroy({ children: true });
         }
