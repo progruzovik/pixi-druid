@@ -1,96 +1,96 @@
-import { BarTextConfig, Rectangle } from "../";
-import * as PIXI from "pixi.js";
+import { BarTextConfig, Rectangle } from "../"
+import * as PIXI from "pixi.js"
 
 export class ProgressBar extends PIXI.Container {
 
-    private _value: number;
+    private _value: number
 
-    private readonly bg: Rectangle;
-    private readonly bar: Rectangle;
-    readonly txtMain: PIXI.Text;
+    private readonly bg: Rectangle
+    private readonly bar: Rectangle
+    readonly txtMain: PIXI.Text
 
     constructor(width: number, height: number = 15, color: number = 0x000000,
                 private readonly textConfig = BarTextConfig.Custom,
                 private _maximum: number = 100, private _minimum: number = 0) {
-        super();
-        this.bg = new Rectangle(width, height);
-        this.bg.alpha = 0;
-        this.addChild(this.bg);
-        this.bar = new Rectangle(0, 0, color);
-        this.addChild(this.bar);
-        this.txtMain = new PIXI.Text("", { fill: "white", fontSize: 18 });
-        this.txtMain.anchor.set(0.5, 0.5);
-        this.addChild(this.txtMain);
+        super()
+        this.bg = new Rectangle(width, height)
+        this.bg.alpha = 0
+        this.addChild(this.bg)
+        this.bar = new Rectangle(0, 0, color)
+        this.addChild(this.bar)
+        this.txtMain = new PIXI.Text("", { fill: "white", fontSize: 18 })
+        this.txtMain.anchor.set(0.5, 0.5)
+        this.addChild(this.txtMain)
 
-        this.value = this.minimum;
-        this.width = width;
-        this.height = height;
+        this.value = this.minimum
+        this.width = width
+        this.height = height
     }
 
     get minimum(): number {
-        return this._minimum;
+        return this._minimum
     }
 
     set minimum(value: number) {
-        this._minimum = value;
-        this.calculateBarWidth();
+        this._minimum = value
+        this.calculateBarWidth()
     }
 
     get maximum(): number {
-        return this._maximum;
+        return this._maximum
     }
 
     set maximum(value: number) {
-        this._maximum = value;
-        this.calculateBarWidth();
+        this._maximum = value
+        this.calculateBarWidth()
     }
 
     get value(): number {
-        return this._value;
+        return this._value
     }
 
     set value(value: number) {
         if (value < this.minimum) {
-            this._value = this.minimum;
+            this._value = this.minimum
         } else if (value > this.maximum) {
-            this._value = this.maximum;
+            this._value = this.maximum
         } else {
-            this._value = value;
+            this._value = value
         }
-        this.calculateBarWidth();
+        this.calculateBarWidth()
         if (this.textConfig == BarTextConfig.Default) {
-            this.text = `${this.value}/${this.maximum}`;
+            this.text = `${this.value}/${this.maximum}`
         }
     }
 
     get text(): string {
-        return this.txtMain.text;
+        return this.txtMain.text
     }
 
     set text(value: string) {
-        this.txtMain.text = value;
+        this.txtMain.text = value
     }
 
     get width(): number {
-        return this.bg.width;
+        return this.bg.width
     }
 
     set width(value: number) {
-        this.bg.width = value;
-        this.txtMain.x = value / 2;
-        this.calculateBarWidth();
+        this.bg.width = value
+        this.txtMain.x = value / 2
+        this.calculateBarWidth()
     }
 
     get height(): number {
-        return this.bar.height;
+        return this.bar.height
     }
 
     set height(value: number) {
-        this.bar.height = value;
-        this.txtMain.y = value / 2;
+        this.bar.height = value
+        this.txtMain.y = value / 2
     }
 
     private calculateBarWidth(): void {
-        this.bar.width = (this.value - this.minimum) / (this.maximum - this.minimum) * this.width;
+        this.bar.width = (this.value - this.minimum) / (this.maximum - this.minimum) * this.width
     }
 }

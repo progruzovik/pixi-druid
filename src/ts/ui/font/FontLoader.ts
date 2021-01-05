@@ -1,4 +1,4 @@
-import * as WebFont from "webfontloader";
+import * as WebFont from "webfontloader"
 
 export namespace FontLoader {
 
@@ -10,9 +10,9 @@ export namespace FontLoader {
                     urls: urls
                 },
                 active(): void {
-                    resolve();
+                    resolve()
                 }
-            });
-        });
+            })
+        })
     }
 }
