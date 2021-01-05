@@ -20,16 +20,16 @@ export class Trapeze extends Shape {
 
         this.graphics.beginFill(this.color)
         this.graphics.drawPolygon([
-            new PIXI.Point(0, polyYStart),
-            new PIXI.Point(0, polyYFinish),
-            new PIXI.Point(-polyWidth, polyYFinish)
+            new PIXI.Point(polyWidth, polyYStart),
+            new PIXI.Point(polyWidth, polyYFinish),
+            new PIXI.Point(0, polyYFinish)
         ])
         const rectangleWidth: number = this.width - polyWidth * 2
-        this.graphics.drawRect(0, 0, rectangleWidth, this.height)
+        this.graphics.drawRect(polyWidth, 0, rectangleWidth, this.height)
         this.graphics.drawPolygon([
-            new PIXI.Point(rectangleWidth, polyYStart),
-            new PIXI.Point(rectangleWidth, polyYFinish),
-            new PIXI.Point(rectangleWidth + polyWidth, polyYFinish)
+            new PIXI.Point(polyWidth + rectangleWidth, polyYStart),
+            new PIXI.Point(polyWidth + rectangleWidth, polyYFinish),
+            new PIXI.Point(polyWidth + rectangleWidth + polyWidth, polyYFinish)
         ])
         this.graphics.endFill()
     }
