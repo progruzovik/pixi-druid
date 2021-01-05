@@ -7,6 +7,7 @@ export * from "./graphics/Frame"
 export * from "./graphics/Line"
 export * from "./graphics/Rectangle"
 export * from "./graphics/Shape"
+export * from "./graphics/Trapeze"
 
 export * from "./ui/button/Button"
 export * from "./ui/button/ButtonGroup"
