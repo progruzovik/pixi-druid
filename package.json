@@ -1,6 +1,6 @@
 {
   "name": "pixi-druid",
-  "version": "1.2.8",
+  "version": "1.2.10",
   "author": "Progruzovik",
   "repository": {
     "type": "git",
@@ -17,12 +17,12 @@
     "compile": "./node_modules/.bin/tsc"
   },
   "devDependencies": {
-    "@types/webfontloader": "^1.6.29",
+    "@types/webfontloader": "^1.6.35",
     "typescript": "^3.9.4"
   },
   "dependencies": {
     "pixi-layers": "^0.3.1",
-    "pixi.js": "^5.3.3",
+    "pixi.js": "^5.3.12",
     "webfontloader": "^1.6.28"
   }
 }
