@@ -4,10 +4,8 @@ import "pixi-layers"
 
 export class App extends PIXI.utils.EventEmitter {
 
-    private readonly application: PIXI.Application
+    protected readonly application: PIXI.Application
     private _root: Branch
-    readonly lighting = new PIXI.display.Layer()
-    readonly ui = new PIXI.display.Layer()
 
     constructor(
         resolution: number,
@@ -26,13 +24,7 @@ export class App extends PIXI.utils.EventEmitter {
             sharedTicker: true
         })
         this.application.stage = new PIXI.display.Stage()
-        this.lighting.useRenderTexture = true
-        this.application.stage.addChild(this.lighting)
-        this.application.stage.addChild(this.createLightingSprite())
-        this.application.stage.addChild(this.ui)
         this.resize(width, height)
-
-        this.lighting.on("display", e => e.blendMode = PIXI.BLEND_MODES.ADD)
     }
 
     get root(): Branch {
@@ -71,11 +63,5 @@ export class App extends PIXI.utils.EventEmitter {
             this.root.destroy({ children: true })
         }
         this.application.destroy()
-    }
-
-    private createLightingSprite(): PIXI.Sprite {
-        const lightingSprite = new PIXI.Sprite(this.lighting.getRenderTexture())
-        lightingSprite.blendMode = PIXI.BLEND_MODES.MULTIPLY
-        return lightingSprite
     }
 }
