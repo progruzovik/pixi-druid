@@ -47,9 +47,9 @@ export abstract class AbstractLayout extends PIXI.Container {
         return element
     }
 
-    removeElements(): void {
+    removeElements(): PIXI.DisplayObject[] {
         this.elements.length = 0
-        this.removeChildren()
+        return this.removeChildren()
     }
 
     abstract updateElements(): void
