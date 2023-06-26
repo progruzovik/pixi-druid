@@ -17,6 +17,11 @@ export class VerticalLayout extends AbstractLayout {
     }
 
     updateElements(): void {
+        for (const element of this.elements) {
+            element.pivot.x = 0
+            element.x = 0
+        }
+
         const width: number = this.width
         for (let i = 0; i < this.elements.length; i++) {
             if (this.alignment == Alignment.Left) {

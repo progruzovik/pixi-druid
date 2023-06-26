@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 export const INDENT = 20
 
 /**
@@ -9,32 +11,25 @@ export namespace Event {
 
     export const REMOVED = "removed"
 
-    /**
-     * Нажатие на объект
-     */
-    export const CLICK = "click"
-
     export const KEY_EVENT = "keyEvent"
 
     export const KEY_RELEASE = "keyRelease"
 
-    export const MOUSE_OVER = "mouseover"
+    export const POINTER_OVER = "pointerover"
 
-    export const MOUSE_DOWN = "mousedown"
+    export const POINTER_DOWN = "pointerdown"
 
-    export const MOUSE_MOVE = "mousemove"
+    export const POINTER_MOVE = "pointermove"
 
-    export const MOUSE_UP = "mouseup"
+    export const POINTER_UP = "pointerup"
 
-    export const MOUSE_OUT = "mouseout"
+    export const POINTER_OUT = "pointerout"
 
-    export const MOUSE_UP_OUTSIDE = "mouseupoutside"
+    export const POINTER_UP_OUTSIDE = "pointerupoutside"
+
+    export const POINTER_TAP = "pointertap"
 
     export const RESIZE = "resize"
-
-    export const TOUCH_START = "touchstart"
-
-    export const TOUCH_END = "touchend"
 
     /**
      * Обновление объекта

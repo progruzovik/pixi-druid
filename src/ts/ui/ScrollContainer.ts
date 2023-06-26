@@ -19,8 +19,8 @@ export class ScrollContainer extends Branch {
         this.content.interactive = true
         this.addChild(this.content)
 
-        this.content.on(Event.MOUSE_OVER, () => this.isMouseOnContainer = true)
-        this.content.on(Event.MOUSE_MOVE, (e: PIXI.InteractionEvent) => {
+        this.content.on(Event.POINTER_OVER, () => this.isMouseOnContainer = true)
+        this.content.on(Event.POINTER_MOVE, (e: PIXI.InteractionEvent) => {
             const oldMousePosition = this.mousePosition.clone()
             this.mousePosition.set(e.data.global.x, e.data.global.y)
             if (this.isLeftMouseButtonDown) {
@@ -30,10 +30,10 @@ export class ScrollContainer extends Branch {
                 this.emit(ScrollContainer.INTERACTION)
             }
         })
-        this.content.on(Event.MOUSE_DOWN, () => this.isLeftMouseButtonDown = true)
-        this.content.on(Event.MOUSE_UP, () => this.isLeftMouseButtonDown = false)
-        this.content.on(Event.MOUSE_OUT, () => this.isMouseOnContainer = false)
-        this.content.on(Event.MOUSE_UP_OUTSIDE, () => this.isLeftMouseButtonDown = false)
+        this.content.on(Event.POINTER_DOWN, () => this.isLeftMouseButtonDown = true)
+        this.content.on(Event.POINTER_UP, () => this.isLeftMouseButtonDown = false)
+        this.content.on(Event.POINTER_OUT, () => this.isMouseOnContainer = false)
+        this.content.on(Event.POINTER_UP_OUTSIDE, () => this.isLeftMouseButtonDown = false)
 
         const onWheel = (e: WheelEvent) => {
             if (this.isMouseOnContainer) {

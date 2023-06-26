@@ -28,22 +28,16 @@ export class Button extends PIXI.Container {
         this.width = this.bg.width
         this.height = this.bg.height
 
-        this.on(Event.MOUSE_OVER, () => this.state = Button.State.MouseOver)
-        this.on(Event.MOUSE_DOWN, () => this.state = Button.State.MouseDown)
-        this.on(Event.MOUSE_UP, () => {
+        this.on(Event.POINTER_OVER, () => this.state = Button.State.MouseOver)
+        this.on(Event.POINTER_DOWN, () => this.state = Button.State.MouseDown)
+        this.on(Event.POINTER_UP, () => {
             this.state = Button.State.MouseOver
             if (this.buttonMode) {
                 this.emit(Button.TRIGGERED)
             }
         })
-        this.on(Event.MOUSE_OUT, () => this.state = Button.State.MouseOut)
-        this.on(Event.TOUCH_START, () => this.state = Button.State.MouseDown)
-        this.on(Event.TOUCH_END, () => {
-            this.state = Button.State.MouseOut
-            if (this.buttonMode) {
-                this.emit(Button.TRIGGERED)
-            }
-        })
+        this.on(Event.POINTER_UP_OUTSIDE, () => this.state = Button.State.MouseOut)
+        this.on(Event.POINTER_OUT, () => this.state = Button.State.MouseOut)
     }
 
     get text(): string {
