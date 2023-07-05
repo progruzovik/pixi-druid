@@ -11,12 +11,13 @@ export class App extends PIXI.utils.EventEmitter {
         resolution: number,
         private width: number,
         private height: number,
+        autoDensity: boolean = true,
         backgroundColor: number = 0x000000,
         canvas?: HTMLCanvasElement
     ) {
         super()
         this.application = new PIXI.Application({
-            autoDensity: true,
+            autoDensity: autoDensity,
             backgroundColor: backgroundColor,
             view: canvas,
             resolution: resolution,
