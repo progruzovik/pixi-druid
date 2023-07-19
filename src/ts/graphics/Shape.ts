@@ -21,7 +21,7 @@ export abstract class Shape extends PIXI.Container {
     }
 
     get width(): number {
-        return this._width
+        return this._width * this.scale.x
     }
 
     set width(value: number) {
@@ -30,7 +30,7 @@ export abstract class Shape extends PIXI.Container {
     }
 
     get height(): number {
-        return this._height
+        return this._height * this.scale.y
     }
 
     set height(value: number) {

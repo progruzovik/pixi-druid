@@ -1,7 +1,7 @@
 import { Shape } from "./Shape"
 
 /**
- * Прямоугольник (отобржаемый объект)
+ * Прямоугольник (отображаемый объект)
  */
 export class Rectangle extends Shape {
 
