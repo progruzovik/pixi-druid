@@ -1,6 +1,6 @@
 {
   "name": "pixi-druid",
-  "version": "1.2.18",
+  "version": "1.2.20",
   "author": "Progruzovik",
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "pixi-layers": "^0.3.1",
-    "pixi.js": "^5.3.12",
-    "webfontloader": "^1.6.28"
+    "pixi.js": "^5.3.12"
   }
 }
